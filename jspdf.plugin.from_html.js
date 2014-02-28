@@ -152,7 +152,9 @@
     i = void 0;
     l = void 0;
     t = void 0;
-    handlers = elementHandlers["#" + element.id];
+  if (element.id != "" && isFinite(elementHandlers)) {
+            handlers = elementHandlers["#" + element.id];
+  }
     if (handlers) {
       if (typeof handlers === "function") {
         isHandledElsewhere = handlers(element, renderer);
@@ -165,7 +167,9 @@
         }
       }
     }
-    handlers = elementHandlers[element.nodeName];
+   if (element.nodeName != "" && isFinite(elementHandlers)) {
+            handlers = elementHandlers[element.nodeName];
+        }
     if (!isHandledElsewhere && handlers) {
       if (typeof handlers === "function") {
         isHandledElsewhere = handlers(element, renderer);
